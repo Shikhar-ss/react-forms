@@ -22,9 +22,10 @@ function App() {
   };
 
   const handleChange = (e) => {
+    const isCheckBox = e.target.type === 'checkbox';
     submitFormAction({
       name : e.target.name,
-      value: e.target.value
+      value: isCheckBox ? e.target.checked : e.target.value 
     })
   }
 
@@ -52,6 +53,27 @@ function App() {
             <p>City</p>
             <input name="CITY" onChange={handleChange}/>
           </label>
+        </fieldset>
+        <fieldset>
+          <label>
+            <p>
+              Apples
+            </p>
+            <select name="apple" onChange={handleChange}>
+              <option value="">--Please select apple--</option>
+              <option value="garwhali">Gharwali</option>
+              <option value="desi">Desi</option>
+              <option value="kashmiri">Kashmiri</option>
+            </select>
+          </label>
+          <label>
+           <p>Count</p>
+           <input type="number" name="count" onChange={handleChange} step="1"/>
+         </label>
+         <label>
+           <p>Gift Wrap</p>
+           <input type="checkbox" name="gift-wrap" onChange={handleChange} />
+         </label>
         </fieldset>
         <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
